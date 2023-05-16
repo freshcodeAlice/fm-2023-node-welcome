@@ -25,6 +25,17 @@ function createTimerLogger () {
     
 }
 
-createTimerLogger();
+//createTimerLogger();
 
 
+
+/*
+Створити файл з будь-яким текстовим вмістом. Прочитати цей файл, і створити новий, який складатиметься з інформації старого файлу + якогось нового тексту
+
+
+*/
+
+fs.readFile('./oldText.txt', 'utf-8')
+.then(result => {
+    fs.writeFile('./newFile.txt', result + '\n New file content added in the end', 'utf-8');
+})
