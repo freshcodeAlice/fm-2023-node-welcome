@@ -1,16 +1,21 @@
+const admin = {
+    "email": "supermail.com",
+    "password": "admin"
+}
+
 
 /*
 Endpoint (ручка) - метод + шлях запиту
 */
 
-module.exports.validateUserAccess = (req, res, next) => {   /// Middleware - проміжний обробник запиту
-    //// перевіряємо, чи є у користувача право на перегляд даної інформації
-    if(Math.random() > 0.5) {
-        /// все ок, ти маєш право на перегляд цієї інформації
-        // маємо передати обробку запиту наступному обробнику в ланцюжку
-        next()
-    } else {
-        // все погано, запит має бути закритий і клієнт має отримати відповідь, що не має права на перегляд цієї інформації
-        res.status(400).end('You are not valid to access this information');
+module.exports.validateUserAccess = (req, res, next) => {  
+    ///req.body
+    const {body: userData} = req;
+    for (key in admin) {
+        if(admin[key] !== userData[key]) {
+            return res.status(400).send('You shall not pass')
+        }
     }
+    //// ми дійшли до кінця циклу, все перевірили, все співпадає
+    next()
 }

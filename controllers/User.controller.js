@@ -1,27 +1,13 @@
+const fs = require('fs/promises');
+const path = require('path');
 
-module.exports.handler = (req, res) => {
-    console.log(req.body)
-    res.end('index');
+module.exports.getUserSecurePage = (req, res) => {
+    /// фінальна обробка запиту, дані провалідовано, маємо віддати сторінку
+    const pathToFile = path.join(__dirname, '../views/secure-page.html');
+    fs.readFile(pathToFile)
+    .then(result => {
+        res.send(result);
+    })
 }
 
-module.exports.handler2 = (req, res) => {
 
-    res.end('products');
-
-}
-
-module.exports.handler3 = (req, res) => {
-const users = [{
-    firstName: 'John',
-    lastName: 'Doe'
-}, {
-    firstName: 'Jake',
-    lastName: 'Snow'
-}, {
-    firstName: 'Josh',
-    lastName: 'Goe'
-}]
-    
-res.send(users);
-
-}
