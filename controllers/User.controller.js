@@ -11,3 +11,8 @@ module.exports.getUserSecurePage = (req, res) => {
 }
 
 
+module.exports.saveVisitorMail = (req, res) => {
+    const pathToFile = path.join(__dirname, '../data/visitors.txt');
+    fs.appendFile(pathToFile, req.body.email);
+    res.status(201).send('Visit!');
+}

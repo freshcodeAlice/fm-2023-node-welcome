@@ -1,3 +1,9 @@
+const yup = require('yup');
+
+const EMAIL_SCHEMA = yup.object({
+    email: yup.string().email('Email is not valid email').required()
+})
+
 const admin = {
     "email": "supermail.com",
     "password": "admin"
@@ -18,4 +24,16 @@ module.exports.validateUserAccess = (req, res, next) => {
     }
     //// ми дійшли до кінця циклу, все перевірили, все співпадає
     next()
+}
+
+
+
+module.exports.validateEmail = async (req, res, next) => {
+    try {
+        await EMAIL_SCHEMA.validate(req.body);
+    } catch (error) {
+       return res.status(400).send(error.message)
+    }
+    
+    next();
 }
