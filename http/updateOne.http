@@ -3,5 +3,6 @@ Content-Type: application/json
 
 {
     "name": "hilak",
+    "price": 50,
     "quantity": 40
 }

@@ -20,8 +20,9 @@ class MedicineDB {
        return map.delete(name);
     }
 
-    static async updateQuantity(name, quantity) {
+    static async update({name, price, quantity,}) {
         const med = map.get(name);
+        med.price = price;
         med.quantity = quantity;
        return map.set(name, med);
     }

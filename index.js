@@ -8,7 +8,7 @@ app.post('/medicine', bodyParser, validateMedicine, MedicineController.addMedici
 app.get('/medicine', MedicineController.getAll);
 app.get('/medicine/:name', MedicineController.getOne);
 app.delete('/medicine/:name', MedicineController.deleteOne);
-app.patch('/medicine', bodyParser, MedicineController.updateQuantity);
+app.patch('/medicine', bodyParser, MedicineController.updateEntity);
 
 /*
 /medicine?name=ibuprofen - query-params

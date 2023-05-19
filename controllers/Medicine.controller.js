@@ -48,11 +48,11 @@ module.exports.deleteOne = async(req, res) => {
     }
 }
 
-module.exports.updateQuantity = async (req, res) => {
+module.exports.updateEntity = async (req, res) => {
     try {
         // req.body -> 
-        const {name, quantity} = req.body;
-        const updated = await MedicineDB.updateQuantity(name, quantity);
+
+        const updated = await MedicineDB.update(req.body);
         res.status(200).send(updated);
     } catch(error) {
         console.log(error);
