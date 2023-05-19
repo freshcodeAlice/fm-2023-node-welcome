@@ -36,3 +36,25 @@ module.exports.getOne = async(req, res) => {
 
     }
 }
+
+
+module.exports.deleteOne = async(req, res) => {
+    try {
+        const { name }= req.params;
+        const med = await MedicineDB.deleteMedicine(name);
+        res.status(200).send(med);
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+module.exports.updateQuantity = async (req, res) => {
+    try {
+        // req.body -> 
+        const {name, quantity} = req.body;
+        const updated = await MedicineDB.updateQuantity(name, quantity);
+        res.status(200).send(updated);
+    } catch(error) {
+        console.log(error);
+    }
+}

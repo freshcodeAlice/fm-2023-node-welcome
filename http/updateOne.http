@@ -1,0 +1,7 @@
+PATCH http://localhost:3000/medicine HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "hilak",
+    "quantity": 40
+}

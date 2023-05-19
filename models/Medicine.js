@@ -17,7 +17,13 @@ class MedicineDB {
     }
 
     static async deleteMedicine(name) {
-        map.delete(name);
+       return map.delete(name);
+    }
+
+    static async updateQuantity(name, quantity) {
+        const med = map.get(name);
+        med.quantity = quantity;
+       return map.set(name, med);
     }
 }
 
